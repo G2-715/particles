@@ -24,13 +24,6 @@ const field = new Field(
   requestAnimationFrame(render);
 })();
 
-// setInterval(() => {
-//   field.particles.map(particle => {
-//       const speed = particle.calculateSpeedByAxes(config.speed);
-//       particle.speed = speed;
-//   })
-// }, 100);
-
 // DAT.GUI part, not important on production
 
 window.onload = function () {
@@ -48,7 +41,7 @@ window.onload = function () {
     field.particles.map(particle => {
       particle.color = config.color;
     })
-  })
+  });
 
   const GUIspeed = particles.add(config, "speed", 0, 300);
   GUIspeed.onFinishChange(() => {
@@ -56,23 +49,53 @@ window.onload = function () {
       const speed = particle.calculateSpeedByAxes(config.speed);
       particle.speed = speed;
     })
-  })
+  });
 
   const GUIradius = particles.add(config, "radius", 1, 5, 0.1);
   GUIradius.onChange(() => {
     field.particles.map(particle => {
       particle.radius = config.radius;
     })
-  })
+  });
 
   const GUIamount = particles.add(config, "amount", 10, 500, 1);
   GUIamount.onFinishChange(() => {
     field.particles = [...Array(config.amount)].map(
       () => new Particle(config.radius, config.color, config.speed)
     );
-  })
+  });
 
-  particles.add(config, "showParticles", true, false)
+  particles.add(config, "showParticles", true, false);
+
+  const GUIinsane = particles.add(config, "insane", true, false);
+  let interval;
+  GUIinsane.onChange(() => {
+    if (config.insane) {
+      interval = setInterval(() => {
+        field.particles.map(particle => {
+          const speed = particle.calculateSpeedByAxes(config.speed);
+          particle.speed = speed;
+        })
+      }, config.insaneInterval);
+    }
+    else
+      clearInterval(interval);
+  });
+
+  const GUIinsaneInterval = particles.add(config, "insaneInterval", 100, 2000);
+  GUIinsaneInterval.onChange(() => {
+    if (config.insane) {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        field.particles.map(particle => {
+          const speed = particle.calculateSpeedByAxes(config.speed);
+          particle.speed = speed;
+        })
+      }, config.insaneInterval);
+    }
+    else
+      clearInterval(interval);
+  });
 
   lines.open();
   particles.open();

@@ -5,5 +5,7 @@ export const config = {
   distance: 180,
   amount: 200,
   lineOpacity: 0.25,
-  showParticles: true
+  showParticles: true,
+  insane: false,
+  insaneInterval: 200
 }
