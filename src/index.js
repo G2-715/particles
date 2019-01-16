@@ -2,24 +2,13 @@ import * as dat from 'dat.gui';
 import { config } from "./config";
 import Particle from "./entities/particle";
 import Field from "./entities/field";
+import context from "./canvas";
 
 const { radius, speed, color, distance, amount, lineOpacity } = config;
 
-const canvas = document.getElementById("field");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-const particles = [...Array(amount)].map(() => new Particle(radius, color, speed));
-
 const field = new Field(
-  canvas.getContext("2d"),
-  particles,
+  context,
+  [...Array(amount)].map(() => new Particle(radius, color, speed)),
   distance,
   color,
   lineOpacity,
@@ -34,6 +23,13 @@ const field = new Field(
 
   requestAnimationFrame(render);
 })();
+
+// setInterval(() => {
+//   field.particles.map(particle => {
+//       const speed = particle.calculateSpeedByAxes(config.speed);
+//       particle.speed = speed;
+//   })
+// }, 100);
 
 // DAT.GUI part, not important on production
 

@@ -1,6 +1,8 @@
 # How to use
 `git clone https://gitlab.com/Whiled0s/particles.git`
+
 `cd ./particles`
+
 `npm install`
 
 # For development
