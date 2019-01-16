@@ -1,0 +1,30 @@
+{
+  "name": "particles",
+  "version": "1.0.0",
+  "description": "web of particles animation",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --env.production",
+    "dev": "webpack-dev-server --open"
+  },
+  "keywords": [
+    "particles",
+    "animation",
+    "web"
+  ],
+  "author": "whiled0s",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^4.6.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.5"
+  }
+}
