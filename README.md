@@ -1,5 +1,5 @@
 # How to use
-`git clone https://gitlab.com/Whiled0s/particles.git`
+`git clone https://github.com/G2-715/particles`
 
 `cd ./particles`
 
