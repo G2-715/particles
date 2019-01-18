@@ -1,13 +1,13 @@
-# How to use
+## How to use
 `git clone https://github.com/G2-715/particles`
 
 `cd ./particles`
 
 `npm install`
 
-# For development
+## For development
 `npm run dev`
 
-# For production
+## For production
 
 `npm run build`
